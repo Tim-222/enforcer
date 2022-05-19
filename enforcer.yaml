@@ -1,0 +1,9 @@
+version: v1.1.0
+steps:
+  - cmd: >
+      docker manifest create
+      {{.Run.Registry}}/mgenforcer:latest
+      {{.Run.Registry}}/mgenforcer:1.0.0
+      {{.Run.Registry}}/mgenforcer:arm
+  - cmd: docker manifest push --purge {{.Run.Registry}}/mgenforcer:latest
+  - cmd: docker manifest inspect {{.Run.Registry}}/mgenforcer:latest
